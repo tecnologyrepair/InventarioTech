@@ -132,6 +132,8 @@ nav h1 {
   color: #03070a !important;
 }
 
+/*Ayuda arreglar problemas con la tabla*/
+/*ajustar si es necesario*/
 #tablas_datos {
   display: flex;
   align-items: right;
