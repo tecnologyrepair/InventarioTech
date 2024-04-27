@@ -15,7 +15,7 @@ header #header_InventarioTech {
   text-align: center;
   background: linear-gradient(45deg, #3c4a53, #03070a);
   border-radius: 10px;
-  }
+}
 
 header #menu {
   width: 100%;
@@ -61,7 +61,7 @@ nav h1 {
   color: white;
 }
 
-#contenedero_botones{
+#contenedero_botones {
   display: flex;
   flex-direction: row;
   justify-content: right;
@@ -96,14 +96,14 @@ nav h1 {
   font-family: Vegur, "PT Sans", Verdana, sans-serif;
   font-weight: auto;
   padding: 0.5em 1.2em;
-  background: linear-gradient(45deg,#348AC7, #0D65A5);
+  background: linear-gradient(45deg, #348ac7, #0d65a5);
   transition: all 1s ease;
   position: relative;
   width: auto;
 }
 
-.boton_ver:hover{
-  background: #3465C7;
+.boton_ver:hover {
+  background: #3465c7;
   color: #03070a !important;
 }
 
@@ -114,49 +114,38 @@ nav h1 {
   padding-top: 45px;
 }
 
-.boton_agregar{
+.boton_agregar {
   color: white !important;
   font-size: 20px;
   border-radius: 10px;
   font-family: Vegur, "PT Sans", Verdana, sans-serif;
   font-weight: auto;
   padding: 0.5em 1.2em;
-  background: linear-gradient(45deg,#33B051, #159634);
+  background: linear-gradient(45deg, #33b051, #159634);
   transition: all 1s ease;
   position: relative;
   width: auto;
 }
 
-.boton_agregar:hover{
-  background: #3BCE5E;
+.boton_agregar:hover {
+  background: #3bce5e;
   color: #03070a !important;
 }
 
 #tablas_datos {
   display: flex;
-  align-items: center;
+  align-items: right;
   justify-content: right;
   padding-top: 45px;
-  width: 50%;
-  align-self: center;
-  
-
+  width: 100%;
+  align-self: right;
 }
 
-#tablas_datos th{
+#tablas_datos th {
   width: 50%;
   background: linear-gradient(45deg, #3c4a53, #03070a);
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   color: white;
   font-family: Vegur, "PT Sans", Verdana, sans-serif;
-}
-
-.tabla_posicion{
-  display: flex;
-  align-items: center;
-  justify-content: right;
-  padding-top: 45px;
-  width: 50%;
-  align-self: center;
 }
