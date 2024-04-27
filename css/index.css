@@ -1,0 +1,162 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  transition: all 0.7s ease-in-out;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+/*Navbar y header*/
+header #header_InventarioTech {
+  color: white;
+  text-align: center;
+  background: linear-gradient(45deg, #3c4a53, #03070a);
+  border-radius: 10px;
+  }
+
+header #menu {
+  width: 100%;
+  background: linear-gradient(45deg, #3c4a53, #03070a);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+.navbar > .container,
+.navbar > .container-fluid,
+.navbar > .container-lg,
+.navbar > .container-md,
+.navbar > .container-sm,
+.navbar > .container-xl,
+.navbar > .container-xxl {
+  flex-wrap: wrap !important;
+}
+
+nav img {
+  border-radius: 10px;
+  width: 120px;
+  height: 110px;
+}
+/*
+nav a{
+  background: #3c4a53;
+  color: gray !important;
+}
+*/
+nav .logo {
+  align-self: center;
+}
+
+#titulo_IT {
+  font-size: 4rem;
+  margin-right: 100%;
+}
+nav h1 {
+  font-family: Vegur, "PT Sans", Verdana, sans-serif;
+  color: white;
+}
+
+#contenedero_botones{
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}
+
+.botones {
+  color: white !important;
+  font-size: 20px;
+  border-radius: 10px;
+  font-family: Vegur, "PT Sans", Verdana, sans-serif;
+  font-weight: auto;
+  padding: 0.5em 1.2em;
+  background: linear-gradient(45deg, #3c4a53, #03070a);
+  transition: all 1s ease;
+  position: relative;
+  width: auto;
+  height: 80px;
+}
+
+.botones:hover {
+  background: #3c4a53;
+  color: gray !important;
+}
+
+/*MAIN*/
+/*Botones*/
+
+.boton_ver {
+  color: white !important;
+  font-size: 20px;
+  border-radius: 10px;
+  font-family: Vegur, "PT Sans", Verdana, sans-serif;
+  font-weight: auto;
+  padding: 0.5em 1.2em;
+  background: linear-gradient(45deg,#348AC7, #0D65A5);
+  transition: all 1s ease;
+  position: relative;
+  width: auto;
+}
+
+.boton_ver:hover{
+  background: #3465C7;
+  color: #03070a !important;
+}
+
+#espacio_boton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 45px;
+}
+
+.boton_agregar{
+  color: white !important;
+  font-size: 20px;
+  border-radius: 10px;
+  font-family: Vegur, "PT Sans", Verdana, sans-serif;
+  font-weight: auto;
+  padding: 0.5em 1.2em;
+  background: linear-gradient(45deg,#33B051, #159634);
+  transition: all 1s ease;
+  position: relative;
+  width: auto;
+}
+
+.boton_agregar:hover{
+  background: #3BCE5E;
+  color: #03070a !important;
+}
+
+#tablas_datos {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  padding-top: 45px;
+  width: 50%;
+  align-self: center;
+  
+
+}
+
+#tablas_datos th{
+  width: 50%;
+  background: linear-gradient(45deg, #3c4a53, #03070a);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  color: white;
+  font-family: Vegur, "PT Sans", Verdana, sans-serif;
+}
+
+.tabla_posicion{
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  padding-top: 45px;
+  width: 50%;
+  align-self: center;
+}
