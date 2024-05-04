@@ -143,6 +143,7 @@ nav h1 {
   align-self: right;
 }
 
+/*Comentario para la tabla que funcione*/
 #tablas_datos th {
   width: 50%;
   background: linear-gradient(45deg, #3c4a53, #03070a);
