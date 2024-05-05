@@ -1,3 +1,5 @@
+const SERVER ='http://localhost/inventarioTEch/api/';
+
 
 function showSweetAlert(type, text, url) {
     // Se compara el tipo de mensaje a mostrar.
