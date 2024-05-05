@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
           // Si la inserción fue exitosa, mostrar un mensaje de éxito y recargar la página
           showSweetAlert(1, "Se agregaron los datos a la base de datos", "");
           modal_agregar.hide();
-          location.href = location.href + '?nocache=' + new Date().getTime();
+          location.href = location.href + "?nocache=" + new Date().getTime();
         } else {
           // Si hubo un error, mostrar un mensaje de error
           showSweetAlert(3, "Error al agregar la marca", "");
@@ -46,7 +46,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Enviar los datos del formulario
     xhr.send("nombre=" + encodeURIComponent(nombre));
   });
-
 });
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -62,8 +61,14 @@ document.addEventListener("DOMContentLoaded", function () {
         // Iterar sobre los datos y agregar filas a la tabla
         response.forEach(function (row) {
           var tr = document.createElement("tr");
-          tr.innerHTML =
-            "<td>" + row.IDMarca + "</td>" + "<td>" + row.NombreMarca + "</td>";
+          tr.innerHTML = `
+            <td> ${row.IDMarca}</td>
+            <td> ${row.NombreMarca}</td>
+            <td>
+            <button class="boton_actualizar"><img src="../recursos/iconos/editar.png" alt="" height="25px"> </button>
+            <button class="boton_eliminar"><img src="../recursos/iconos/eliminar.png" alt="" height="25px"> </button>
+            </td>
+            `;
           if (tbody) {
             tbody.appendChild(tr);
           } else {
