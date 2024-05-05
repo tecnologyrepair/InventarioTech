@@ -4,6 +4,15 @@ var modal_agregar = new bootstrap.Modal(
     keyboard: false,
   }
 );
+
+var modal_observar = new bootstrap.Modal(
+  document.getElementById("ver_consultas"),
+  {
+    keyboard: false,
+  }
+);
+
+
 // Obtener la referencia al tbody
 var tbody = document.getElementById("tbody-rows");
 // Obtener referencia al formulario de agregar
@@ -80,3 +89,33 @@ document.addEventListener("DOMContentLoaded", function () {
   };
   xhr.send();
 });
+
+function openConsulta() {
+  // Realizar la solicitud para obtener los datos de la tabla MarcaEquipo
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "../api/marca.php", true);
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      var response = JSON.parse(xhr.responseText);
+      if (response.error) {
+        console.error("Error:", response.error);
+      } else {
+        // Limpiar el cuerpo de la tabla antes de agregar nuevos datos
+        var tbody = document.getElementById("tbody-rows-general");
+        tbody.innerHTML = "";
+
+        // Iterar sobre los datos y agregar filas a la tabla
+        response.forEach(function(row) {
+          var tr = document.createElement("tr");
+          tr.innerHTML = "<td>" + row.IDMarca + "</td>" + "<td>" + row.NombreMarca + "</td>";
+          tbody.appendChild(tr);
+        });
+
+        // Mostrar el modal después de cargar los datos
+        var modal = new bootstrap.Modal(document.getElementById('ver_consultas'));
+        modal.show();
+      }
+    }
+  };
+  xhr.send();
+}
