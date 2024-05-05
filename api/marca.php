@@ -34,6 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         case 'ver':
             verDatos();
             break;
+        case 'ver-consultas':
+            verDatosCompletos();
+            break;
         // Agregar más casos según sea necesario para otras acciones de visualización
         default:
             echo json_encode(['error' => 'Acción de visualización no válida']);
@@ -81,8 +84,29 @@ function eliminarMarca() {
 // Función para ver los datos de la tabla MarcaEquipo
 function verDatos() {
     global $db;
-    // Realizar la consulta para obtener todos los datos de MarcaEquipo
+    // Realizar la consulta para obtener todos los datos de MarcaEquipo que esten ACTIVOS
     $query = $db->query("SELECT * FROM MarcaEquipo WHERE estado = 'activo'");
+
+    // Verificar si la consulta fue exitosa
+    if ($query) {
+        // Almacenar los resultados en un array
+        $results = [];
+        while ($row = $query->fetchArray(SQLITE3_ASSOC)) {
+            $results[] = $row;
+        }
+
+        // Devolver los resultados como JSON
+        echo json_encode($results);
+    } else {
+        echo json_encode(['error' => 'Error al ejecutar la consulta']);
+    }
+}
+
+// Función para ver los datos de la tabla MarcaEquipo
+function verDatosCompletos() {
+    global $db;
+    // Realizar la consulta para obtener todos los datos de MarcaEquipo
+    $query = $db->query("SELECT * FROM MarcaEquipo");
 
     // Verificar si la consulta fue exitosa
     if ($query) {

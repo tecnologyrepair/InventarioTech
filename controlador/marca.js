@@ -3,17 +3,20 @@ var modal_agregar = new bootstrap.Modal(document.getElementById("agregar_marca")
 var modal_ver = new bootstrap.Modal(document.getElementById("ver_consultas"));
 var modal_eliminar = new bootstrap.Modal(document.getElementById("eliminar"));
 
+//ABRIR MODAL AGREGAR
 // Función para abrir el modal de agregar
 function openAgregar() {
   modal_agregar.show();
 }
 
+
+//PROCESO VER LAS CONSULTAS
 // Función para abrir el modal de ver
 function openConsulta() {
   console.log("Abriendo modal de consulta");
   // Realizar la solicitud para obtener los datos de la tabla MarcaEquipo
   var xhr = new XMLHttpRequest();
-  xhr.open("GET", "../api/marca.php?action=ver", true);
+  xhr.open("GET", "../api/marca.php?action=ver-consultas", true);
   xhr.onreadystatechange = function() {
     console.log("ReadyState: " + xhr.readyState + ", Status: " + xhr.status);
     if (xhr.readyState === 4 && xhr.status === 200) {
@@ -82,6 +85,7 @@ function openEliminarModal(idMarca, nombreMarca) {
   modal_eliminar.show();
 }
 
+//PROCESO ELIMINAR
 // Obtener referencia al formulario de eliminación
 var eliminarForm = document.getElementById("eliminar_form");
 
@@ -121,6 +125,8 @@ eliminarForm.addEventListener("submit", function(event) {
 });
 
 
+
+//PROCESO TABLA MOSTRAR DATOS 
 // Obtener la referencia al tbody
 var tbody = document.getElementById("tbody-rows");
 
