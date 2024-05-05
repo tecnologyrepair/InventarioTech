@@ -145,10 +145,44 @@ nav h1 {
 
 /*Comentario para la tabla que funcione*/
 #tablas_datos th {
-  width: 50%;
+  width: auto;
   background: linear-gradient(45deg, #3c4a53, #03070a);
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   color: white;
   font-family: Vegur, "PT Sans", Verdana, sans-serif;
+}
+
+.boton_actualizar {
+    color: white !important;
+    font-size: 20px;
+    border-radius: 10px;
+    font-family: Vegur, "PT Sans", Verdana, sans-serif;
+    font-weight: auto;
+    padding: 0.5em 1.2em;
+    background: linear-gradient(45deg, #AD3BCE, #80229B);
+    transition: all 1s ease;
+    position: relative;
+}
+
+.boton_actualizar:hover {
+  background: #CD78E6;
+  color: #03070a !important;
+}
+
+.boton_eliminar {
+  color: white !important;
+  font-size: 20px;
+  border-radius: 10px;
+  font-family: Vegur, "PT Sans", Verdana, sans-serif;
+  font-weight: auto;
+  padding: 0.5em 1.2em;
+  background: linear-gradient(45deg, #A40E0E, #760E0E);
+  transition: all 1s ease;
+  position: relative;
+}
+
+.boton_eliminar:hover {
+background: #F03434;
+color: white !important;
 }
