@@ -14,15 +14,12 @@ function openAgregar() {
 //PROCESO VER LAS CONSULTAS
 // Función para abrir el modal de ver
 function openConsulta() {
-  console.log("Abriendo modal de consulta");
   // Realizar la solicitud para obtener los datos de la tabla MarcaEquipo
   var xhr = new XMLHttpRequest();
   xhr.open("GET", "../api/marca.php?action=ver-consultas", true);
   xhr.onreadystatechange = function () {
-    console.log("ReadyState: " + xhr.readyState + ", Status: " + xhr.status);
     if (xhr.readyState === 4 && xhr.status === 200) {
       var response = JSON.parse(xhr.responseText);
-      console.log("Respuesta del servidor:", response);
       if (response && response.length > 0) {
         // Limpiar el cuerpo de la tabla antes de agregar nuevos datos
         var tbody = document.getElementById("tbody-rows-general");
@@ -39,7 +36,7 @@ function openConsulta() {
         // Mostrar el modal después de cargar los datos
         modal_ver.show();
       } else {
-        console.error("Error: No se recibieron datos del servidor");
+        showSweetAlert(3, "No hay datos", "");
       }
     }
   };
@@ -113,11 +110,11 @@ eliminarForm.addEventListener("submit", function (event) {
           //location.reload();
         } else {
           // Si hubo un error, mostrar un mensaje de error
-          showSweetAlert(1, "Error al eliminar la marca", "");
+          showSweetAlert(2, "Error al eliminar la marca", "");
         }
       } else {
         // Si hubo un error en la solicitud AJAX, mostrar un mensaje de error
-        alert(3, "Error en la solicitud AJAX", "");
+        showSweetAlert(3, "Error en la solicitud AJAX", "");
       }
     }
   };
@@ -153,7 +150,7 @@ function openActualizarModal(idMarca, nombreMarca, estadoMarca) {
       document.getElementById('estadoM').value = estadoMarca;
   })
   .catch(error => {
-      console.error('Error:', error);
+    showSweetAlert(2, "Error", "");
   });
 
   // Abrir el modal de actualización
@@ -201,7 +198,7 @@ document
         }
       })
       .catch((error) => {
-        console.error("Error:", error);
+        showSweetAlert(2, "Error", "");
       });
   });
 
@@ -216,7 +213,6 @@ document.addEventListener("DOMContentLoaded", function () {
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
       var response = JSON.parse(xhr.responseText);
-      console.log("Respuesta del servidor:", response);
       if (response && response.length > 0) {
         // Limpiar el cuerpo de la tabla antes de agregar nuevos datos
         tbody.innerHTML = "";
@@ -257,7 +253,7 @@ document.addEventListener("DOMContentLoaded", function () {
           tbody.appendChild(tr);
         });
       } else {
-        console.error("Error: No se recibieron datos del servidor");
+        showSweetAlert(2, "Error", "");
       }
     }
   };
