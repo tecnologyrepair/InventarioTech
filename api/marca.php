@@ -17,6 +17,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         case 'eliminar':
             eliminarMarca();
             break;
+        case 'actualizar':
+            actualizarMarca();
+            break;
         // Agregar más casos según sea necesario para otras acciones
         default:
             echo json_encode(['error' => 'Acción no válida']);
@@ -37,6 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         case 'ver-consultas':
             verDatosCompletos();
             break;
+        case 'estado':
+                verEstados();
+        break;
         // Agregar más casos según sea necesario para otras acciones de visualización
         default:
             echo json_encode(['error' => 'Acción de visualización no válida']);
@@ -120,6 +126,54 @@ function verDatosCompletos() {
         echo json_encode($results);
     } else {
         echo json_encode(['error' => 'Error al ejecutar la consulta']);
+    }
+}
+
+function actualizarMarca() {
+    global $db;
+
+    // Verificar si se proporcionaron todos los datos necesarios para la actualización
+    if (isset($_POST['idmarca'], $_POST['nombre'], $_POST['estado'])) {
+        // Obtener los datos del formulario
+        $idMarca = $_POST['idmarca'];
+        $nombreMarca = $_POST['nombre'];
+        $estadoMarca = $_POST['estado'];
+
+        // Realizar la actualización en la base de datos
+        $stmt = $db->prepare('UPDATE MarcaEquipo SET NombreMarca = :nombre, estado = :estado WHERE IDMarca = :idmarca');
+        $stmt->bindValue(':nombre', $nombreMarca, SQLITE3_TEXT);
+        $stmt->bindValue(':estado', $estadoMarca, SQLITE3_TEXT);
+        $stmt->bindValue(':idmarca', $idMarca, SQLITE3_INTEGER);
+        $result = $stmt->execute();
+
+        // Verificar si la actualización fue exitosa
+        if ($result) {
+            echo json_encode(['success' => true]);
+        } else {
+            echo json_encode(['success' => false, 'error' => 'Error al actualizar los datos']);
+        }
+    } else {
+        echo json_encode(['success' => false, 'error' => 'Datos incompletos para actualizar la marca']);
+    }
+}
+// Función para ver los estados de la tabla MarcaEquipo
+function verEstados() {
+    global $db;
+    // Realizar la consulta para obtener los estados únicos de la tabla MarcaEquipo
+    $query = $db->query("SELECT DISTINCT estado FROM MarcaEquipo");
+
+    // Verificar si la consulta fue exitosa
+    if ($query) {
+        // Almacenar los resultados en un array
+        $estados = [];
+        while ($row = $query->fetchArray(SQLITE3_ASSOC)) {
+            $estados[] = $row['estado'];
+        }
+
+        // Devolver los resultados como JSON
+        echo json_encode($estados);
+    } else {
+        echo json_encode(['error' => 'Error al obtener los estados']);
     }
 }
 ?>
